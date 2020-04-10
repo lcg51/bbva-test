@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pet } from '../../models/Pet/pet';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +16,14 @@ export class PetsService {
 
   constructor(private http: HttpClient) { }
 
-  public getPets(pageId: number) {
+  public getPets(pageId: number): Observable<any> {
     const urlParsed = this.URLGetPets.replace(':page_id', pageId.toString());
-    return this.http.get(urlParsed)
-    .subscribe((res: Array<any>) => this.Pets = res.map((pet: Pet) => new Pet().deserialize(pet)));
+    return this.http.get(urlParsed);
 
   }
 
   public getPetById(id: number) {
     const urlParsed = this.URLGetPetByID.replace(':pet_id', id.toString());
-    return this.http.get(urlParsed)
-    .subscribe((res: any) => this.Pet = new Pet().deserialize(res));
+    return this.http.get(urlParsed);
   }
 }
