@@ -12,17 +12,25 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class HomeComponent implements OnInit {
 
   public pets: Array<Pet> = [];
+  public page = 1;
 
   constructor(private petsService: PetsService, private domSanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.petsService.getPets(1)
-    .subscribe((res: Array<any>) => this.pets = res.map((pet: Pet) => new Pet(this.domSanitizer).deserialize(pet)));
+    this.getPets();
   }
 
 
   public onScroll(ev: any) {
     console.log(ev);
+    this.page += 1;
+    this.getPets();
+
+  }
+
+  public getPets() {
+    this.petsService.getPets(this.page)
+    .subscribe((res: Array<any>) => this.pets = [...this.pets, ...res.map((pet: Pet) => new Pet(this.domSanitizer).deserialize(pet))]);
   }
 
 }

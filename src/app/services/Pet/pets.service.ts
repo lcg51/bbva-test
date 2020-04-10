@@ -24,7 +24,6 @@ export class PetsService {
 
   public getPetById(id: number) {
     const urlParsed = this.URLGetPetByID.replace(':pet_id', id.toString());
-    return this.http.get(urlParsed)
-    .subscribe((res: any) => this.Pet = new Pet().deserialize(res));
+    return this.http.get(urlParsed);
   }
 }
