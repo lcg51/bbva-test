@@ -1,1 +1,7 @@
-<p>home works!</p>
+<div class="pets-wrapper">
+  <div class="c-petCard" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll($event)" *ngFor="let pet of pets">
+    <div class="c-petCard--img" [style.background-image]="pet?.getPetPhotoUrl()"></div>
+    <h3 class="c-petCard--name"> {{pet?.getPetName()}} </h3>
+  </div>
+</div>

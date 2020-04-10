@@ -1,8 +1,10 @@
+import { DomSanitizer } from '@angular/platform-browser';
+
 export interface Deserializable {
     deserialize(input: any): this;
 }
 
-export class Pet implements Deserializable{
+export class Pet implements Deserializable {
 
     private id: number;
     private name: string;
@@ -14,7 +16,9 @@ export class Pet implements Deserializable{
     private description: string;
     private number_of_lives: number;
 
-    constructor() {}
+    constructor(private domSanitizer: DomSanitizer) {
+
+    }
 
     public deserialize(input: any) {
         Object.assign(this, input);
@@ -46,7 +50,7 @@ export class Pet implements Deserializable{
     }
 
     public getPetPhotoUrl() {
-        return this.photo_url;
+        return this.domSanitizer.bypassSecurityTrustStyle(`url(${this.photo_url})`);
     }
 
     public getDescription() {
