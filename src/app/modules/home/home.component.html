@@ -1,7 +1,26 @@
-<div class="pets-wrapper" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
-    [fromRoot]="true" (scrolled)="onScroll($event)">
-  <div class="c-petCard"  *ngFor="let pet of pets">
+<div class="filters">
+  <span>Ordena las mascotas por: </span>
+  <app-search-input [placeholder]="'Elige un campo para ordenar'" [error]="false"
+  [items]="sortItems" (selectValueEmitter)="getSortItem($event)"></app-search-input>
+</div>
+
+<div class="pets-wrapper" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [fromRoot]="true"
+  (scrolled)="onScroll($event)">
+  <div class="c-petCard" *ngFor="let pet of pets" (click)="goToPet(pet?.getId())">
     <div class="c-petCard--img" [style.background-image]="pet?.getPetPhotoUrl()"></div>
-    <h3 class="c-petCard--name"> {{pet?.getPetName()}} </h3>
+    <div class="c-petCard__header">
+      <h3 class="c-petCard--name"> {{pet?.getPetName()}} </h3>
+      <div class="c-petCard__header--right"> 
+        <span> {{pet?.getHealthName()}} </span>
+        <i [ngClass]="pet?.getHealth() === 0 ? 'c-petCard__icon--yellow' : pet?.getHealth() === 1 ? 'c-petCard__icon--orange' : 'c-petCard__icon--red'" 
+        class="material-icons c-petCard__icon">favorite</i>
+      </div>
+    </div>
+    <div class="c-petCard__content">
+      <p> Altura: {{pet?.getPetHeight()}} </p>
+      <p> Peso: {{pet?.getPetWeight()}} </p>
+      <p> Longitud: {{pet?.getPetLength()}} </p>
+      <p> Tipo: {{pet?.getPetKind()}} </p>
+    </div>
   </div>
 </div>

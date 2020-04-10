@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     HttpClientModule,
     HomeRoutingModule,
     InfiniteScrollModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: []

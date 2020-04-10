@@ -2,16 +2,27 @@
 .pets-wrapper{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    span{
+        width: 40%;
+    }
 }
 
 
 .c-petCard {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    cursor: pointer;    
+    width: 48%;
 
     &--name{
         text-transform: uppercase;
+        margin: 0;
     }
 
     &--img {
@@ -19,5 +30,41 @@
         height: 250px;
         background-size: cover;
         background-position: center;
+    }
+
+    &__icon {
+
+        &--red {
+            color: red;
+        }
+
+        &--orange {
+            color: orange;
+        }
+
+        &--yellow {
+            color: yellow;
+        }
+    }
+
+    &__content {
+        padding: 0.4rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.4rem;
+
+        &--right{
+            display: flex;
+            align-items: flex-end;
+            span {
+                margin-right: 5px;
+            }
+        }
     }
 }
