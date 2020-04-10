@@ -3,13 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeModule } from './modules/home/home.module';
+import { DetailModule } from './modules/detail/detail.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    HomeModule,
+    DetailModule,
     AppRoutingModule
   ],
   providers: [],
