@@ -1,0 +1,23 @@
+
+.header{
+
+    &__wrapper {
+        display: flex;
+        background-color: #1c4a7d;
+        padding: 0.2rem 0.8rem;   
+    }
+
+    &__text{
+        text-transform: uppercase;
+        color: #ffffff;
+        font-size: 25px;
+        font-weight: 700;
+    }
+}
+
+
+.content {
+    &__wrapper {
+        margin-top: 20px;
+    }
+}
