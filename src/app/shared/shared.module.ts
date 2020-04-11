@@ -2,11 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchInputComponent } from './search-input/search-input.component';
+import { NavigateComponent } from './navigate/navigate.component';
 
 
 @NgModule({
   declarations: [
     SearchInputComponent,
+    NavigateComponent,
   ],
   imports: [
     BrowserModule,
@@ -14,6 +16,7 @@ import { SearchInputComponent } from './search-input/search-input.component';
   ],
   exports: [
       SearchInputComponent,
+      NavigateComponent,
   ],
   providers: [],
   bootstrap: []

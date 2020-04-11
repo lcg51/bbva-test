@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './modules/home/home.module';
 import { DetailModule } from './modules/detail/detail.module';
 import { SharedModule } from './shared/shared.module';
+import { NavigateComponent } from './shared/navigate/navigate.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
     HomeModule,
     DetailModule,
     AppRoutingModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

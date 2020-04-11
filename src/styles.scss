@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Muli:400,500,700&display=swap');
 
-html, body {
-    margin: 0;
-    font-family: 'Muli', sans-serif;
+* {
+  margin: 0;
+  font-family: 'Muli', sans-serif;
 }
 
 ul {
-    list-style: none;
-    padding: 0;
-  }
+  list-style: none;
+  padding: 0;
+}

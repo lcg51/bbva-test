@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pet } from '../../models/Pet/pet';
 import { Observable } from 'rxjs';
+import { NavigationStart } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class PetsService {
   private URLGetPetByID = `${this.baseUrl}fever_pets_data/pets/:pet_id`;
   public Pets: Array<any>;
   public Pet: Pet;
+  public historyRoutes: Array<NavigationStart> = [];
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +27,11 @@ export class PetsService {
   public getPetById(id: number) {
     const urlParsed = this.URLGetPetByID.replace(':pet_id', id.toString());
     return this.http.get(urlParsed);
+  }
+
+
+  public getLastRoute() {
+    const last = this.historyRoutes.length - 1;
+    return this.historyRoutes[last];
   }
 }

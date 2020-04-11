@@ -1,0 +1,22 @@
+
+
+.navigate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    &--end {
+        justify-content: flex-end;
+    }
+  
+    i {
+      font-size: 26px;
+      cursor: pointer;
+    }
+  
+    span {
+      cursor: pointer;
+    }
+  }
+  

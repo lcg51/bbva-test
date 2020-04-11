@@ -1,9 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <header>
   <div class="header__wrapper">
-    <p class="header__text">Pets </p>
+    <h1 class="header__text" (click)="goToHome()">Pets </h1>
   </div>
 </header>
 <div class="content__wrapper">
+  <app-navigate></app-navigate>
   <router-outlet></router-outlet>
 </div>

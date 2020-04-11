@@ -15,6 +15,8 @@ import {
   Router
 } from '@angular/router';
 
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-home',
@@ -56,11 +58,13 @@ export class HomeComponent implements OnInit {
   constructor(
     private petsService: PetsService,
     private domSanitizer: DomSanitizer,
-    private router: Router
+    private router: Router,
+    private location: Location,
   ) {}
 
   ngOnInit() {
     this.getPets();
+    console.log(this.location.getState());
   }
 
   public getSortItem(item: any) {
