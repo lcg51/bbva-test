@@ -4,7 +4,7 @@
     &__wrapper {
         display: flex;
         background-color: #1c4a7d;
-        padding: 0.2rem 0.8rem;   
+        padding: 0.8rem;   
     }
 
     &__text{
@@ -12,6 +12,7 @@
         color: #ffffff;
         font-size: 25px;
         font-weight: 700;
+        cursor: pointer;
     }
 }
 
@@ -19,5 +20,6 @@
 .content {
     &__wrapper {
         margin-top: 20px;
+        padding: 0.6rem;
     }
 }

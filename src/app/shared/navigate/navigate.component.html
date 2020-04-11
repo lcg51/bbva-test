@@ -1,0 +1,15 @@
+
+<div class="navigate" [ngClass]="petsService.getLastRoute()?.restoredState !== null ? 'navigate--end' : ''">
+
+  <div *ngIf="petsService.getLastRoute()?.id !== 1 && petsService.getLastRoute()?.restoredState === null" 
+  class="navigate navigate__backward">
+    <i (click)="goBack()" class="material-icons">navigate_before</i>
+    <span (click)="goBack()">Atrás </span>
+  </div>
+
+  <div *ngIf="petsService.getLastRoute()?.restoredState != null" class="navigate navigate__forward">
+    <span (click)="goForward()">Adelante </span>
+    <i (click)="goForward()" class="material-icons">navigate_next</i>
+  </div>
+
+</div>

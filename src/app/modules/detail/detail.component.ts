@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PetsService } from 'src/app/services/Pet/pets.service';
+import { Pet } from 'src/app/models/Pet/pet';
+import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  public pet: Pet;
+  public id: number;
+
+  constructor(
+    private petsService: PetsService,
+    private route: ActivatedRoute,
+    private domSanitizer: DomSanitizer,
+  ) { 
+    this.route.params.subscribe((params: any) => {
+      this.id = parseInt(params.id);
+    });
+  }
 
   ngOnInit() {
+    this.petsService.getPetById(this.id)
+    .subscribe(data => this.pet = new Pet(this.domSanitizer).deserialize(data));
   }
 
 }

@@ -19,7 +19,9 @@ export class Pet implements Deserializable {
   private health: number;
   private number_of_lives?: number;
 
-  constructor(private domSanitizer: DomSanitizer) {
+  constructor(
+      private domSanitizer?: DomSanitizer
+    ) {
 
   }
 
