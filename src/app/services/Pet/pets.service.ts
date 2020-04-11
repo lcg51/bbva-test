@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Pet } from '../../models/Pet/pet';
 import { Observable } from 'rxjs';
 import { NavigationStart } from '@angular/router';
+import { SortPetsI } from 'src/app/interfaces/sort-pets-i';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,11 @@ export class PetsService {
   public Pets: Array<any>;
   public Pet: Pet;
   public historyRoutes: Array<NavigationStart> = [];
+  public filterConfig: SortPetsI;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   public getPets(pageId: number): Observable<any> {
     const urlParsed = this.URLGetPets.replace(':page_id', pageId.toString());

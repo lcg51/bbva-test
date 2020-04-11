@@ -15,7 +15,8 @@ import {
   Router
 } from '@angular/router';
 
-import { Location } from '@angular/common';
+import { SortPetsI } from 'src/app/interfaces/sort-pets-i';
+import { sortPetValues } from 'src/app/config/vars';
 
 
 @Component({
@@ -27,48 +28,21 @@ export class HomeComponent implements OnInit {
 
   public pets: Array < Pet > = [];
   public page = 1;
-  public sortValues: any;
-  public sortItems = [{
-      name: 'Nombre',
-      realName: 'name',
-      id: 1
-    },
-    {
-      name: 'Tipo',
-      realName: 'kind',
-      id: 2
-    },
-    {
-      name: 'Peso',
-      realName: 'weight',
-      id: 3
-    },
-    {
-      name: 'Altura',
-      realName: 'height',
-      id: 4
-    },
-    {
-      name: 'Longitud',
-      realName: 'length',
-      id: 5
-    },
-  ];
+  public sortItems: Array<SortPetsI> = sortPetValues;
+  public showModal = false;
 
   constructor(
     private petsService: PetsService,
     private domSanitizer: DomSanitizer,
     private router: Router,
-    private location: Location,
   ) {}
 
   ngOnInit() {
     this.getPets();
-    console.log(this.location.getState());
   }
 
-  public getSortItem(item: any) {
-    this.sortValues = item;
+  public getSortItem(sortValues: SortPetsI) {
+    this.petsService.filterConfig = sortValues;
     this.sortPets();
   }
 
@@ -84,13 +58,13 @@ export class HomeComponent implements OnInit {
 
   public addPets(data) {
     this.pets = [...this.pets, ...data.map((pet: Pet) => new Pet(this.domSanitizer).deserialize(pet))];
-    if (this.sortValues != null) {
+    if (this.petsService.filterConfig != null) {
       this.sortPets();
     }
   }
 
   public sortPets() {
-    this.pets.sort(this.compare(this.sortValues.realName));
+    this.pets.sort(this.compare(this.petsService.filterConfig.realName));
   }
 
   private compare(property: string) {
@@ -98,11 +72,19 @@ export class HomeComponent implements OnInit {
       const bandA = a.getPropertyByString(property);
       const bandB = b.getPropertyByString(property);
       return (bandA > bandB) ? 1 : -1;
-    }
+    };
   }
 
   public goToPet(id: number) {
     this.router.navigate(['pets', id]);
+  }
+
+  public getPetOfTheDay() {
+    this.showModal = true;
+  }
+
+  public closeModal() {
+    this.showModal = false;
   }
 
 }

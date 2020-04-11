@@ -1,0 +1,6 @@
+<div class="c-modal" [ngClass]="show ? 'active' : ''">
+  <div class="c-modal__layer">
+     <i class="material-icons c-modal__close" (click)="closeModal()">clear</i>
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -18,9 +18,9 @@ export class DetailComponent implements OnInit {
     private petsService: PetsService,
     private route: ActivatedRoute,
     private domSanitizer: DomSanitizer,
-  ) { 
+  ) {
     this.route.params.subscribe((params: any) => {
-      this.id = parseInt(params.id);
+      this.id = parseInt(params.id, 10);
     });
   }
 
