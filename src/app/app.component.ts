@@ -34,9 +34,7 @@ export class AppComponent {
       )
       .subscribe(
         (event: NavigationStart) => {
-          console.log(event)
           this.petsService.historyRoutes.push(event);
-          console.groupEnd();
 
         }
       );

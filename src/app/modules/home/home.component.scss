@@ -7,9 +7,12 @@
 
 .filters {
     display: flex;
-    align-items: center;
-    span{
-        width: 40%;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    &__left {
+        display: flex;
+        align-self: center;
     }
 }
 
