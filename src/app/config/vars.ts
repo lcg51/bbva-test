@@ -24,3 +24,7 @@ export const sortPetValues = [{
     id: 5
   },
 ];
+
+export const maxIdPetValue = 30;
+
+export const minIdPetValue = 1;

@@ -16,7 +16,9 @@ import {
 } from '@angular/router';
 
 import { SortPetsI } from 'src/app/interfaces/sort-pets-i';
-import { sortPetValues } from 'src/app/config/vars';
+import { sortPetValues, maxIdPetValue, minIdPetValue } from 'src/app/config/vars';
+import { StorageService } from 'src/app/services/Storage/storage.service';
+import * as moment from 'moment';
 
 
 @Component({
@@ -30,15 +32,25 @@ export class HomeComponent implements OnInit {
   public page = 1;
   public sortItems: Array<SortPetsI> = sortPetValues;
   public showModal = false;
+  public dayPet: Pet;
 
   constructor(
     private petsService: PetsService,
     private domSanitizer: DomSanitizer,
     private router: Router,
+    private storageService: StorageService,
   ) {}
 
   ngOnInit() {
     this.getPets();
+    const storageItem = this.storageService.getStorage('daysPet');
+    const today = moment().format('DD/MM/YYYY');
+    if (storageItem === null || storageItem[today] === null) {
+      const randomId = this.getRandomId();
+      this.getDayPet(randomId);
+    } else {
+      this.dayPet = new Pet(this.domSanitizer).deserialize(storageItem[today]);
+    }
   }
 
   public getSortItem(sortValues: SortPetsI) {
@@ -83,8 +95,22 @@ export class HomeComponent implements OnInit {
     this.showModal = true;
   }
 
+  public getDayPet(randomId) {
+    this.petsService.getPetById(randomId).subscribe(data => {
+      const today = moment().format('DD/MM/YYYY');
+      const jsonPets = this.storageService.getStorage('daysPet') || {};
+      jsonPets[today] = data;
+      this.storageService.setStorage('daysPet', jsonPets);
+      this.dayPet = new Pet(this.domSanitizer).deserialize(data);
+    });
+  }
+
   public closeModal() {
     this.showModal = false;
+  }
+
+  public getRandomId() {
+    return Math.floor(Math.random() * (maxIdPetValue - minIdPetValue)) + 1;
   }
 
 }
