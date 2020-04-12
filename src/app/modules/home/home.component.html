@@ -31,22 +31,22 @@
 </div>
 
  <app-modal [show]="showModal" (closeModalEmitter)="closeModal()">
-  <h2>Mascota del día </h2>
-  <div class="c-petCard">
-    <div class="c-petCard--img" [style.background-image]="pets[0]?.getPetPhotoUrl()"></div>
+  <h2 class="c-modal__header">Mascota del día </h2>
+  <div class="c-petCard c-petCard--100">
+    <div class="c-petCard--img" [style.background-image]="dayPet?.getPetPhotoUrl()"></div>
     <div class="c-petCard__header">
-      <h3 class="c-petCard--name"> {{pets[0]?.getPetName()}} </h3>
+      <h3 class="c-petCard--name"> {{dayPet?.getPetName()}} </h3>
       <div class="c-petCard__header--right">
-        <span> {{pets[0]?.getHealthName()}} </span>
-        <i [ngClass]="pets[0]?.getHealth() === 0 ? 'c-petCard__icon--yellow' : pets[0]?.getHealth() === 1 ? 'c-petCard__icon--orange' : 'c-petCard__icon--red'"
+        <span> {{dayPet?.getHealthName()}} </span>
+        <i [ngClass]="dayPet?.getHealth() === 0 ? 'c-petCard__icon--yellow' : dayPet?.getHealth() === 1 ? 'c-petCard__icon--orange' : 'c-petCard__icon--red'"
           class="material-icons c-petCard__icon">favorite</i>
       </div>
     </div>
     <div class="c-petCard__content">
-      <p> Altura: {{pets[0]?.getPetHeight()}} </p>
-      <p> Peso: {{pets[0]?.getPetWeight()}} </p>
-      <p> Longitud: {{pets[0]?.getPetLength()}} </p>
-      <p> Tipo: {{pets[0]?.getPetKind()}} </p>
+      <p> Altura: {{dayPet?.getPetHeight()}} </p>
+      <p> Peso: {{dayPet?.getPetWeight()}} </p>
+      <p> Longitud: {{dayPet?.getPetLength()}} </p>
+      <p> Tipo: {{dayPet?.getPetKind()}} </p>
     </div>
   </div>
  </app-modal>
