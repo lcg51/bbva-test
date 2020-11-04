@@ -1,0 +1,17 @@
+
+.pets-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.login {
+
+    &--container {
+        display: flex;
+        flex-direction: column;
+        max-width: 600px;
+        margin: auto;
+    }
+}

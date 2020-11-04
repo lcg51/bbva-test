@@ -1,52 +1,28 @@
-<div class="filters">
-  <div class="filters__left">
-    <span>Ordena las mascotas por: </span>
-    <app-search-input [placeholder]="'Elige un campo para ordenar'" [error]="false" [items]="sortItems"
-      (selectValueEmitter)="getSortItem($event)"></app-search-input>
-  </div>
-  <div class="filters__right">
-    <button (click)="getPetOfTheDay()" class="c-button">Pet of the day</button>
-  </div>
-</div>
+<div class="user-panel__container">
 
-<div class="pets-wrapper" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [fromRoot]="true"
-  (scrolled)="onScroll($event)">
-  <div class="c-petCard" *ngFor="let pet of pets" (click)="goToPet(pet?.getId())">
-    <div class="c-petCard--img" [style.background-image]="pet?.getPetPhotoUrl()"></div>
-    <div class="c-petCard__header">
-      <h3 class="c-petCard--name"> {{pet?.getPetName()}} </h3>
-      <div class="c-petCard__header--right">
-        <span> {{pet?.getHealthName()}} </span>
-        <i [ngClass]="pet?.getHealth() === 0 ? 'c-petCard__icon--yellow' : pet?.getHealth() === 1 ? 'c-petCard__icon--orange' : 'c-petCard__icon--red'"
-          class="material-icons c-petCard__icon">favorite</i>
-      </div>
-    </div>
-    <div class="c-petCard__content">
-      <p> Altura: {{pet?.getPetHeight()}} </p>
-      <p> Peso: {{pet?.getPetWeight()}} </p>
-      <p> Longitud: {{pet?.getPetLength()}} </p>
-      <p> Tipo: {{pet?.getPetKind()}} </p>
-    </div>
+  <div class="user-panel__header">
+    <h2> Welcome! </h2>
+    <p> The last time you accessed was: </p>
   </div>
-</div>
 
- <app-modal [show]="showModal" (closeModalEmitter)="closeModal()">
-  <h2 class="c-modal__header">Mascota del día </h2>
-  <div class="c-petCard c-petCard--100">
-    <div class="c-petCard--img" [style.background-image]="dayPet?.getPetPhotoUrl()"></div>
-    <div class="c-petCard__header">
-      <h3 class="c-petCard--name"> {{dayPet?.getPetName()}} </h3>
-      <div class="c-petCard__header--right">
-        <span> {{dayPet?.getHealthName()}} </span>
-        <i [ngClass]="dayPet?.getHealth() === 0 ? 'c-petCard__icon--yellow' : dayPet?.getHealth() === 1 ? 'c-petCard__icon--orange' : 'c-petCard__icon--red'"
-          class="material-icons c-petCard__icon">favorite</i>
+  <div class="user-panel__timer">
+      <div class="timer-block">
+        <span class="timer-block--number">00</span>
+        <span class="timer-block--text"> days </span>
       </div>
-    </div>
-    <div class="c-petCard__content">
-      <p> Altura: {{dayPet?.getPetHeight()}} </p>
-      <p> Peso: {{dayPet?.getPetWeight()}} </p>
-      <p> Longitud: {{dayPet?.getPetLength()}} </p>
-      <p> Tipo: {{dayPet?.getPetKind()}} </p>
-    </div>
+      <div class="timer-block">
+        <span class="timer-block--number">00</span>
+        <span class="timer-block--text"> hours </span>
+      </div>
+      <div class="timer-block">
+        <span class="timer-block--number">00</span>
+        <span class="timer-block--text"> minutes </span>
+      </div>
+      <div class="timer-block">
+        <span class="timer-block--number">00</span>
+        <span class="timer-block--text"> seconds </span>
+      </div>
   </div>
- </app-modal>
+
+  <button class="c-button" [disabled]="disableButton" (click)="logout()"> Logout </button>
+</div>

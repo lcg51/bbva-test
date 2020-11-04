@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DetailComponent } from './detail.component';
+import { LoginComponent } from './login.component';
 
 const routes: Routes = [
   {
-    path: 'pets/:id', component: DetailComponent ,
+    path: 'login', component: LoginComponent,
   }
 ];
 
@@ -12,4 +12,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class DetailRoutingModule { }
+export class LoginRoutingModule { }

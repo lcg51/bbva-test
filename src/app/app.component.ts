@@ -9,7 +9,6 @@ import {
 import {
   filter
 } from 'rxjs/operators';
-import { PetsService } from './services/Pet/pets.service';
 
 @Component({
   selector: 'app-root',
@@ -17,11 +16,10 @@ import { PetsService } from './services/Pet/pets.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'fever-pets';
+  title = 'BBVA test';
 
   constructor(
     private router: Router,
-    private petsService: PetsService,
   ) {
 
     router.events
@@ -34,13 +32,8 @@ export class AppComponent {
       )
       .subscribe(
         (event: NavigationStart) => {
-          this.petsService.historyRoutes.push(event);
-
         }
       );
   }
 
-  public goToHome() {
-    this.router.navigate(['']);
-  }
 }

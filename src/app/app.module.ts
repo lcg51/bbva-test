@@ -4,10 +4,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginModule } from './modules/login/login.module';
 import { HomeModule } from './modules/home/home.module';
-import { DetailModule } from './modules/detail/detail.module';
 import { SharedModule } from './shared/shared.module';
-import { NavigateComponent } from './shared/navigate/navigate.component';
+import { AuthService } from './services/Auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -16,12 +16,12 @@ import { NavigateComponent } from './shared/navigate/navigate.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    LoginModule,
     HomeModule,
-    DetailModule,
     AppRoutingModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
