@@ -1,0 +1,43 @@
+.ac-search-input {
+    position: relative;
+    padding-bottom: 20px;
+  
+    span{
+      margin-bottom: 3px;
+    }
+  
+    &__label {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    &__text {
+      font-size: 12px;
+      color: #333;
+      height: 40px;
+      border-width: 0 0 2px;
+  
+      &:focus {
+        outline: none;
+      }
+  
+      &.error{
+        //border: 1px solid red;
+      }
+    }
+  
+    &__error {
+      color: red;
+      font-size: 12px;
+      font-weight: 700;
+      position: absolute;
+      bottom: 3px;
+    }
+
+  }
+  
+  
+  :host{
+    width: 100%;
+  }
