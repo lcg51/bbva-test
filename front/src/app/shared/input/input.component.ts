@@ -10,6 +10,7 @@ export class InputComponent implements OnChanges {
 
     public model = '';
     @Input() label: string;
+    @Input() value: string;
     @Input() placeholder: string;
     @Input() type = 'text';
     @Input() validation: string;
@@ -30,6 +31,6 @@ export class InputComponent implements OnChanges {
             res = patt.test(this.model);
             this.error = !res;
         }
-        this.keyUpEmitter.emit(res);
+        this.keyUpEmitter.emit({valid: res, value: this.model});
     }
 }

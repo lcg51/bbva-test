@@ -9,9 +9,8 @@ import {
   Router
 } from '@angular/router';
 
-import { SortPetsI } from 'src/app/interfaces/sort-pets-i';
-import { StorageService } from 'src/app/services/Storage/storage.service';
-import * as moment from 'moment';
+import { UserService } from 'src/app/services/User/user.service';
+import { UserLoginI } from 'src/app/interfaces/user.interface';
 
 
 @Component({
@@ -25,6 +24,7 @@ export class LoginComponent implements OnInit {
   public form = {
       mail: {
         type: 'text',
+        value: '',
         validation: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
         msg: 'El mail introducido no es correcto',
         error: false,
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
       },
       password: {
         type: 'password',
+        value: '',
         validation: /^.{6,}$/,
         msg: 'La contraseña debe de tener al menos 6 carácteres',
         error: false,
@@ -41,15 +42,15 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private storageService: StorageService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
   }
 
   public validateFormInput(ev: any, key: string) {
-      console.log(ev);
-      this.form[key].valid = ev;
+      this.form[key].valid = ev.valid;
+      this.form[key].value = ev.value;
       this.checkForm();
   }
 
@@ -61,7 +62,15 @@ export class LoginComponent implements OnInit {
   }
 
   public goToHome() {
-    this.router.navigate(['/']);
+    const user: UserLoginI = {
+      mail: this.form.mail.value,
+      password: this.form.password.value
+    };
+    this.userService.logIn(user).subscribe(result => {
+      console.log(result);
+      this.userService.saveUser(result.body);
+      this.router.navigate(['/']);
+    });
   }
 
 }

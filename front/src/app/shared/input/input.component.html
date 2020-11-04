@@ -1,7 +1,7 @@
 <div class="ac-search-input">
   <label class="ac-search-input__label">
     <span>{{label}}</span>
-    <input [type]="type" class="ac-search-input__text" placeholder="{{placeholder}}" [ngClass]="{'error': error}"
+    <input [type]="type" class="ac-search-input__text" placeholder="{{placeholder}}"  autocomplete="off" [ngClass]="{'error': error}"
       maxlength="255" [(ngModel)]="model" (keyup)="keyUp($event)" />
   </label>
   <div *ngIf="error" class="ac-search-input__error">
