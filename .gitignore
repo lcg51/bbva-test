@@ -39,8 +39,7 @@ al files
 /bazel-out
 
 # dependencies
-/front/node_modules
-/node/node_modules
+node_modules/
 
 # profiling files
 chrome-profiler-events.json
