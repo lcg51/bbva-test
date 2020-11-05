@@ -1,7 +1,6 @@
 var Storage = require('node-storage');
 var store = new Storage('db.json');
 const jwt = require('jsonwebtoken');
-const config = require('./config');
 
 const login = (req, res) => {
   const mailUser = req.body.mail;
@@ -34,7 +33,7 @@ const logout = (req, res) => {
   res.json({
     body: 'ok',
   });
-}
+};
 
 module.exports = {
   login,
