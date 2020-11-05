@@ -3,14 +3,16 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  DomSanitizer
-} from '@angular/platform-browser';
-import {
   Router
 } from '@angular/router';
 
-import { UserService } from 'src/app/services/User/user.service';
-import { UserLoginI } from 'src/app/interfaces/user.interface';
+import {
+  UserService
+} from 'src/app/services/User/user.service';
+import {
+  UserLoginI
+} from 'src/app/interfaces/user.interface';
+
 
 
 @Component({
@@ -22,24 +24,24 @@ export class LoginComponent implements OnInit {
 
   public disableButton = true;
   public form = {
-      mail: {
-        type: 'text',
-        value: '',
-        validation: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-        msg: 'El mail introducido no es correcto',
-        error: false,
-        valid: false
-      },
-      password: {
-        type: 'password',
-        value: '',
-        validation: /^.{6,}$/,
-        msg: 'La contraseña debe de tener al menos 6 carácteres',
-        error: false,
-        valid: false,
-      }
+    mail: {
+      type: 'text',
+      value: '',
+      validation: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+      msg: 'El mail introducido no es correcto',
+      error: false,
+      valid: false
+    },
+    password: {
+      type: 'password',
+      value: '',
+      validation: /^.{6,}$/,
+      msg: 'La contraseña debe de tener al menos 6 carácteres',
+      error: false,
+      valid: false,
+    }
   };
-  public error: any;
+  public error: string;
 
   constructor(
     private router: Router,
@@ -48,14 +50,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
-  public validateFormInput(ev: any, key: string) {
-      this.form[key].valid = ev.valid;
-      this.form[key].value = ev.value;
-      this.checkForm();
+  public validateFormInput(ev, key: string) {
+    this.form[key].valid = ev.valid;
+    this.form[key].value = ev.value;
+    this.checkForm();
   }
 
   public checkForm() {
-    let keys: any = Object.entries(this.form);
+    let keys: Array < any > = Object.entries(this.form);
     keys = keys.map(key => key[1]);
     const someKeyIsFalse = keys.some(input => input.valid === false);
     this.disableButton = (someKeyIsFalse) ? true : false;
@@ -68,14 +70,14 @@ export class LoginComponent implements OnInit {
     };
     this.userService.logIn(user).subscribe(
       response => {
-      this.userService.saveUser(response.body);
-      this.userService.saveToken(response.token);
-      this.router.navigate(['/']);
-      this.error = null;
-    },
-    error => {
-      this.error = error.error.message;
-    });
+        this.userService.saveUser(response.body);
+        this.userService.saveToken(response.token);
+        this.router.navigate(['/']);
+        this.error = null;
+      },
+      error => {
+        this.error = error.error.message;
+      });
   }
 
 }

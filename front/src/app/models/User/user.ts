@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 
 export interface Deserializable {
-  deserialize(input: any): this;
+  deserialize(input: object): this;
 }
 
 export class User implements Deserializable {
@@ -14,7 +14,7 @@ export class User implements Deserializable {
 
   constructor() {}
 
-  public deserialize(input: any) {
+  public deserialize(input: object) {
     Object.assign(this, input);
     this.lastAccess = moment(this.lastAccess);
     return this;
@@ -29,29 +29,25 @@ export class User implements Deserializable {
   }
 
   public getDays(): string {
-    let days: any = moment().diff(this.lastAccess, 'days');
-    days = (days < 10) ? '0' + days : days;
-    return days;
+    const days: number = moment().diff(this.lastAccess, 'days');
+    return (days < 10) ? '0' + days : days.toString();
   }
 
   public getHours(): string {
-    let hours: any = moment().diff(this.lastAccess, 'hours');
-    hours = (hours < 10) ? '0' + hours : hours;
-    return hours;
+    const hours: number = moment().diff(this.lastAccess, 'hours');
+    return (hours < 10) ? '0' + hours : hours.toString();
   }
 
   public getMinutes(): string {
-    let minutes: any = moment().diff(this.lastAccess, 'minutes');
+    let minutes: number = moment().diff(this.lastAccess, 'minutes');
     minutes = minutes % 60;
-    minutes = (minutes < 10) ? '0' + minutes : minutes;
-    return minutes;
+    return (minutes < 10) ? '0' + minutes : minutes.toString();
   }
 
   public getSeconds(): string {
-    let seconds: any = moment().diff(this.lastAccess, 'seconds');
+    let seconds: number = moment().diff(this.lastAccess, 'seconds');
     seconds = seconds % 60;
-    seconds = (seconds < 10) ? '0' + seconds : seconds;
-    return seconds;
+    return (seconds < 10) ? '0' + seconds : seconds.toString();
   }
 
 }

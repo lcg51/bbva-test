@@ -1,10 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {
+  BrowserModule
+} from '@angular/platform-browser';
+import {
+  NgModule
+} from '@angular/core';
 
 
-import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './home.component';
-import { HomeRoutingModule } from './home-routing.module';
+import {
+  HttpClientModule
+} from '@angular/common/http';
+import {
+  HomeComponent
+} from './home.component';
+import {
+  HomeRoutingModule
+} from './home-routing.module';
+import {
+  SharedModule
+} from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,9 +26,10 @@ import { HomeRoutingModule } from './home-routing.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: []
 })
-export class HomeModule { }
+export class HomeModule {}

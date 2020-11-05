@@ -4,25 +4,8 @@
     <h2> Welcome {{userService?.user?.getCompleteName()}}!</h2>
     <p> The last time you accessed was: </p>
   </div>
-
-  <div class="user-panel__timer">
-      <div class="timer-block">
-        <span class="timer-block--number">{{userService?.user?.getDays()}}</span>
-        <span class="timer-block--text"> days </span>
-      </div>
-      <div class="timer-block">
-        <span class="timer-block--number">{{userService?.user?.getHours()}}</span>
-        <span class="timer-block--text"> hours </span>
-      </div>
-      <div class="timer-block">
-        <span class="timer-block--number">{{userService?.user?.getMinutes()}}</span>
-        <span class="timer-block--text"> minutes </span>
-      </div>
-      <div class="timer-block">
-        <span class="timer-block--number">{{userService?.user?.getSeconds()}}</span>
-        <span class="timer-block--text"> seconds </span>
-      </div>
-  </div>
+  <app-timer-block [days]="userService?.user?.getDays()" [hours]="userService?.user?.getHours()"
+  [minutes]="userService?.user?.getMinutes()" [seconds]="userService?.user?.getSeconds()"> </app-timer-block>
 
   <button class="c-button" [disabled]="disableButton" (click)="logout()"> Logout </button>
 </div>
