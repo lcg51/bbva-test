@@ -20,8 +20,9 @@ import {
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:3000/login';
+  private baseUrl = 'http://localhost:3000';
   public user: User;
+  public token: string;
 
   constructor(
     private http: HttpClient,
@@ -35,14 +36,36 @@ export class UserService {
     const httpHeaders = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
     });
-    return this.http.post(this.baseUrl, user, {
-      headers: httpHeaders
+    const headersObj = { headers: httpHeaders };
+    return this.http.post(`${this.baseUrl}/login`, user, headersObj);
+  }
+
+  public logOut(userL: User): Observable < any > {
+    const httpHeaders = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'access-token': this.token
     });
+    const headersObj = { headers: httpHeaders };
+    return this.http.post(`${this.baseUrl}/logout`, { user: userL }, headersObj);
   }
 
   public saveUser(userData) {
     this.user = new User().deserialize(userData);
     this.storage.setStorage('user', this.user);
+  }
+
+  public saveToken(token: string) {
+    this.token = token;
+    this.storage.setStorage('token', this.token);
+  }
+
+  public removeUser() {
+    this.user = null;
+    this.storage.removeStorage('user');
+  }
+
+  public removeToken() {
+    this.storage.removeStorage('token');
   }
 
   public isLogged() {

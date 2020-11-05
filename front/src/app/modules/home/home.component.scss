@@ -37,10 +37,10 @@
             &--number {
                 font-size: 60px;
             }
+        }
 
-            &--text {
-
-            }
+        @media all and (max-width: 600px) {
+            flex-direction: column;
         }
     }
 }

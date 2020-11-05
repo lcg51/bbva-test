@@ -17,8 +17,6 @@ export class User implements Deserializable {
   public deserialize(input: any) {
     Object.assign(this, input);
     this.lastAccess = moment(this.lastAccess);
-    console.log(this.lastAccess.format('DD/MM/YYYY HH:mm:ss'));
-    console.log(moment().format('DD/MM/YYYY HH:mm:ss'));
     return this;
   }
 

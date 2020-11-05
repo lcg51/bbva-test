@@ -14,4 +14,18 @@
         max-width: 600px;
         margin: auto;
     }
+
+    &--error {
+        color: red;
+        padding: 0.2rem 0 0.5rem;
+    }
+
+    &__img {
+        margin: auto;
+        margin-bottom: 20px;
+
+        img {
+            height: 150px;
+        }
+    }
 }

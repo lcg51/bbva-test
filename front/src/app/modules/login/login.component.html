@@ -1,5 +1,8 @@
 
 <div class="login--container">
+    <div class="login__img">
+        <img src="/assets/desbloquear.svg"/>
+    </div>
     <app-input [placeholder]="'Email'" [type]="form?.mail?.type" [value]="form?.mail?.value" [validation]="form?.mail?.validation"  [error]="form?.mail?.error" 
     [errorMsg]="form?.mail?.msg"
     (keyUpEmitter)="validateFormInput($event, 'mail')"> 
@@ -7,6 +10,8 @@
     <app-input [placeholder]="'Password'" [type]="form?.password?.type" [value]="form?.password?.value" [validation]="form?.password?.validation" [errorMsg]="form?.password?.msg"
     (keyUpEmitter)="validateFormInput($event, 'password')"> 
     </app-input>
+
+    <span class="login--error">{{error}}</span>
 
     <button class="c-button" [disabled]="disableButton" (click)="goToHome()"> Login </button>
 </div>

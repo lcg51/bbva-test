@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fever-pets": {
+    "bbva-test": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fever-pets",
+            "outputPath": "dist/bbva-test",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "fever-pets:build"
+            "browserTarget": "bbva-test:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "fever-pets:build:production"
+              "browserTarget": "bbva-test:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fever-pets:build"
+            "browserTarget": "bbva-test:build"
           }
         },
         "test": {
@@ -109,15 +109,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "fever-pets:serve"
+            "devServerTarget": "bbva-test:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "fever-pets:serve:production"
+              "devServerTarget": "bbva-test:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "fever-pets"
+  "defaultProject": "bbva-test"
 }

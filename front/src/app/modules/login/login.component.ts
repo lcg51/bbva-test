@@ -39,14 +39,14 @@ export class LoginComponent implements OnInit {
         valid: false,
       }
   };
+  public error: any;
 
   constructor(
     private router: Router,
     private userService: UserService
   ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public validateFormInput(ev: any, key: string) {
       this.form[key].valid = ev.valid;
@@ -66,10 +66,15 @@ export class LoginComponent implements OnInit {
       mail: this.form.mail.value,
       password: this.form.password.value
     };
-    this.userService.logIn(user).subscribe(result => {
-      console.log(result);
-      this.userService.saveUser(result.body);
+    this.userService.logIn(user).subscribe(
+      response => {
+      this.userService.saveUser(response.body);
+      this.userService.saveToken(response.token);
       this.router.navigate(['/']);
+      this.error = null;
+    },
+    error => {
+      this.error = error.error.message;
     });
   }
 
