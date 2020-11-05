@@ -8,10 +8,10 @@ import {
 
 import {
   UserService
-} from 'src/app/services/User/user.service';
+} from 'src/app/shared/services/User/user.service';
 import {
   UserLoginI
-} from 'src/app/interfaces/user.interface';
+} from 'src/app/shared/interfaces/user.interface';
 
 
 

@@ -9,13 +9,13 @@ import {
 } from '@angular/forms';
 import {
   InputComponent
-} from './input/input.component';
+} from './components/input/input.component';
 import {
   TimerBlockComponent
-} from './timer-block/timer-block.component';
+} from './components/timer-block/timer-block.component';
 import {
   ButtonComponent
-} from './button/button.component';
+} from './components/button/button.component';
 
 
 @NgModule({

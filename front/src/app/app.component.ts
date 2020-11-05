@@ -18,22 +18,6 @@ import {
 export class AppComponent {
   title = 'BBVA test';
 
-  constructor(
-    private router: Router,
-  ) {
-
-    router.events
-      .pipe(
-        filter(
-          (event: NavigationEnd) => {
-            return (event instanceof NavigationStart);
-          }
-        )
-      )
-      .subscribe(
-        (event: NavigationStart) => {
-        }
-      );
-  }
+  constructor() {}
 
 }

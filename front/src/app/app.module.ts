@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './modules/login/login.module';
 import { HomeModule } from './modules/home/home.module';
 import { SharedModule } from './shared/shared.module';
-import { AuthService } from './services/Auth/auth.service';
+import { AuthService } from './shared/services/Auth/auth.service';
 
 @NgModule({
   declarations: [

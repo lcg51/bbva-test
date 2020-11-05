@@ -10,20 +10,23 @@ import {
 } from 'rxjs';
 import {
   User
-} from 'src/app/models/User/user';
+} from 'src/app/shared/models/User/user';
 import {
   StorageService
 } from '../Storage/storage.service';
 import {
   UserLoginI
-} from 'src/app/interfaces/user.interface';
+} from 'src/app/shared/interfaces/user.interface';
+import {
+  APIURL
+} from 'src/app/config/vars';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = APIURL;
   public user: User;
   public token: string;
 
@@ -57,7 +60,7 @@ export class UserService {
    *
    *
    * @param user - The data of the user(User) logged
-   * @returns The an observable with the data`
+   * @returns An observable with the data`
    */
   public logOut(userL: User): Observable < any > {
     const httpHeaders = new HttpHeaders({

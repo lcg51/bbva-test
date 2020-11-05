@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 import {
   UserService
-} from 'src/app/services/User/user.service';
+} from 'src/app/shared/services/User/user.service';
 
 @Component({
   selector: 'app-home',

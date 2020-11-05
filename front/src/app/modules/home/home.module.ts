@@ -11,10 +11,10 @@ import {
 } from '@angular/common/http';
 import {
   HomeComponent
-} from './home.component';
+} from './pages/home.component';
 import {
   HomeRoutingModule
-} from './home-routing.module';
+} from './home.routes';
 import {
   SharedModule
 } from 'src/app/shared/shared.module';
