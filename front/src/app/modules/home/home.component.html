@@ -5,7 +5,8 @@
     <p> The last time you accessed was: </p>
   </div>
   <app-timer-block [days]="userService?.user?.getDays()" [hours]="userService?.user?.getHours()"
-  [minutes]="userService?.user?.getMinutes()" [seconds]="userService?.user?.getSeconds()"> </app-timer-block>
+    [minutes]="userService?.user?.getMinutes()" [seconds]="userService?.user?.getSeconds()"> </app-timer-block>
 
-  <button class="c-button" [disabled]="disableButton" (click)="logout()"> Logout </button>
+  <app-button [disabled]="false" [text]="'Logout'" [light]="true" (clickEmitter)="logout()">
+  </app-button>
 </div>

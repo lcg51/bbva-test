@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   public logout() {
+    console.log('llega');
     this.userService.logOut(this.userService.user).subscribe(result => {
       this.userService.removeUser();
       this.userService.removeToken();

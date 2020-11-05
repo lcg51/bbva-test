@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
     this.disableButton = (someKeyIsFalse) ? true : false;
   }
 
-  public goToHome() {
+  public login() {
     const user: UserLoginI = {
       mail: this.form.mail.value,
       password: this.form.password.value

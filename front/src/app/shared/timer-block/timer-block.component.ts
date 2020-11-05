@@ -11,7 +11,7 @@ import {
   templateUrl: './timer-block.component.html',
   styleUrls: ['./timer-block.component.scss']
 })
-export class TimerBlockComponent implements OnChanges {
+export class TimerBlockComponent {
 
   @Input() days: string;
   @Input() hours: string;
@@ -21,7 +21,4 @@ export class TimerBlockComponent implements OnChanges {
 
   constructor() {}
 
-  ngOnChanges(changes) {
-      console.log(changes);
-  }
 }

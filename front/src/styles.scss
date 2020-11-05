@@ -10,24 +10,3 @@ ul {
   list-style: none;
   padding: 0;
 }
-
-
-.c-button {
-    background-color: #1c4a7d;
-    border: none;
-    color: #ffffff;
-    padding: 0.6rem 1rem;
-    font-size: 16px;
-    cursor: pointer;
-
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-}
-
-.c-modal {
-    &__header {
-        margin-bottom: 10px;
-    }
-}

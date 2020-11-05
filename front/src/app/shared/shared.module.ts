@@ -13,12 +13,16 @@ import {
 import {
   TimerBlockComponent
 } from './timer-block/timer-block.component';
+import {
+  ButtonComponent
+} from './button/button.component';
 
 
 @NgModule({
   declarations: [
     InputComponent,
     TimerBlockComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,8 @@ import {
   ],
   exports: [
     InputComponent,
-    TimerBlockComponent
+    TimerBlockComponent,
+    ButtonComponent,
   ],
   providers: [],
   bootstrap: []
