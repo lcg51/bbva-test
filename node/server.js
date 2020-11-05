@@ -51,7 +51,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function (req, res) {
-  res.status(200).send('Hsdasd');
+  res.status(200).send('Hello World!');
 });
 
 app.post('/login', routes.login);
