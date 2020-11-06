@@ -1,16 +1,26 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  async,
+  ComponentFixture,
+  TestBed
+} from '@angular/core/testing';
 
-import { InputComponent } from './input.component';
+import {
+  InputComponent
+} from './input.component';
+import {
+  FormsModule
+} from '@angular/forms';
 
 describe('LoginComponent', () => {
   let component: InputComponent;
-  let fixture: ComponentFixture<InputComponent>;
+  let fixture: ComponentFixture < InputComponent > ;
 
-  beforeEach(async(() => {
+  beforeEach(async (() => {
     TestBed.configureTestingModule({
-      declarations: [ InputComponent ]
-    })
-    .compileComponents();
+        imports: [FormsModule],
+        declarations: [InputComponent]
+      })
+      .compileComponents();
   }));
 
   beforeEach(() => {

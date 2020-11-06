@@ -1,16 +1,46 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  async,
+  ComponentFixture,
+  TestBed
+} from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+import {
+  LoginComponent
+} from './login.component';
+import {
+  FormsModule
+} from '@angular/forms';
+import {
+  SharedModule
+} from 'src/app/shared/shared.module';
+import {
+  BrowserModule
+} from '@angular/platform-browser';
+import {
+  HttpClientModule
+} from '@angular/common/http';
+import {
+  UserService
+} from 'src/app/shared/services/User/user.service';
+import { LoginRoutingModule } from '../login.routes';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+  let fixture: ComponentFixture < LoginComponent > ;
 
-  beforeEach(async(() => {
+  beforeEach(async (() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
-    })
-    .compileComponents();
+        imports: [
+          BrowserModule,
+          HttpClientModule,
+          LoginRoutingModule,
+          SharedModule,
+          FormsModule
+        ],
+        declarations: [LoginComponent],
+        providers: [UserService],
+      })
+      .compileComponents();
   }));
 
   beforeEach(() => {

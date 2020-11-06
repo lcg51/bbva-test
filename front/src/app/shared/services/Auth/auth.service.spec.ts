@@ -1,12 +1,35 @@
-import { TestBed } from '@angular/core/testing';
+import {
+  TestBed
+} from '@angular/core/testing';
 
-import { AuthService } from './auth.service';
+import {
+  AuthService
+} from './auth.service';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
 
 describe('AuthService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let httpTestingController: HttpTestingController;
+  let service: AuthService;
+  beforeEach(() => {
+
+    TestBed.configureTestingModule({
+      providers: [AuthService],
+      imports: [HttpClientTestingModule],
+    });
+
+    httpTestingController = TestBed.get(HttpTestingController);
+    service = TestBed.get(AuthService);
+  });
+
+  afterEach(() => {
+    httpTestingController.verify();
+  });
 
   it('should be created', () => {
-    const service: AuthService = TestBed.get(AuthService);
-    expect(service).toBeTruthy();
+    const serviceI: AuthService = TestBed.get(AuthService);
+    expect(serviceI).toBeTruthy();
   });
 });

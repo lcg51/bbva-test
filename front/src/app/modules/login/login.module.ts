@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { LoginRoutingModule } from './login.routes';
 import { LoginComponent } from './pages/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     BrowserModule,
     HttpClientModule,
     LoginRoutingModule,
-    InfiniteScrollModule,
     SharedModule,
   ],
   providers: [],

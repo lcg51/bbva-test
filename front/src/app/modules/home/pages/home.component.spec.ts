@@ -1,16 +1,44 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  async,
+  ComponentFixture,
+  TestBed
+} from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import {
+  HomeComponent
+} from './home.component';
+import {
+  UserService
+} from 'src/app/shared/services/User/user.service';
+import {
+  SharedModule
+} from 'src/app/shared/shared.module';
+import {
+  BrowserModule
+} from '@angular/platform-browser';
+import {
+  HttpClientModule
+} from '@angular/common/http';
+import {
+  HomeRoutingModule
+} from '../home.routes';
 
-describe('DetailComponent', () => {
+describe('HomeComponent', () => {
   let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+  let fixture: ComponentFixture < HomeComponent > ;
 
-  beforeEach(async(() => {
+  beforeEach(async (() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
-    })
-    .compileComponents();
+        imports: [
+          BrowserModule,
+          HttpClientModule,
+          HomeRoutingModule,
+          SharedModule,
+        ],
+        declarations: [HomeComponent],
+        providers: [UserService]
+      })
+      .compileComponents();
   }));
 
   beforeEach(() => {
